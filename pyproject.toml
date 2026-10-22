@@ -1,0 +1,59 @@
+[project]
+name = "finance-assistant"
+version = "0.1.0"
+description = "Backend персонального финансового помощника"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0,<1.0.0",
+    "uvicorn[standard]>=0.32.0,<1.0.0",
+    "sqlalchemy>=2.0.0,<3.0.0",
+    "alembic>=1.13.0,<2.0.0",
+    "pydantic>=2.9.0,<3.0.0",
+    "pydantic-settings>=2.5.0,<3.0.0",
+    "psycopg2-binary>=2.9.0,<3.0.0",
+    "pyjwt>=2.9.0,<3.0.0",
+    "argon2-cffi>=23.1.0,<24.0.0",
+    "email-validator (>=2.3.0,<3.0.0)",
+]
+
+[tool.poetry]
+packages = [{ include = "app" }]
+
+[tool.poetry.group.dev.dependencies]
+ruff = ">=0.7.0,<1.0.0"
+pytest = ">=8.3.0,<9.0.0"
+httpx = ">=0.27.0,<1.0.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+# Проект ведёт комментарии и документацию на русском. Разрешаем все буквы
+# русского алфавита как "неконфузабельные", чтобы RUF003 не срабатывал на
+# предлоги и союзы ("с", "е", "о", "г", "р", "у", "х"), визуально совпадающие
+# с латиницей. RUF003 продолжит ловить греческие, армянские и прочие
+# действительно случайные символы.
+allowed-confusables = [
+    "А", "Б", "В", "Г", "Д", "Е", "Ё", "Ж", "З", "И", "Й", "К", "Л", "М",
+    "Н", "О", "П", "Р", "С", "Т", "У", "Ф", "Х", "Ц", "Ч", "Ш", "Щ", "Ъ",
+    "Ы", "Ь", "Э", "Ю", "Я",
+    "а", "б", "в", "г", "д", "е", "ё", "ж", "з", "и", "й", "к", "л", "м",
+    "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "ъ",
+    "ы", "ь", "э", "ю", "я",
+]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-ra"

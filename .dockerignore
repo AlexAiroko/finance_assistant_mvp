@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# VCS / IDE
+.git/
+.gitignore
+.idea/
+.vscode/
+
+# Tests and docs
+tests/
+README.md
+*.md
+
+# OS
+.DS_Store
+Thumbs.db
