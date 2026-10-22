@@ -46,7 +46,7 @@ available_amount        = total_balance − upcoming_expenses_total − reserve_
 ### 1. Клонировать репозиторий и установить зависимости
 
 ```powershell
-git clone <repo-url> finance-assistant
+git clone https://github.com/AlexAiroko/finance_assistant_mvp.git finance-assistant
 cd finance-assistant
 poetry install
 ```
